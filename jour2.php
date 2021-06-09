@@ -1,11 +1,6 @@
 <?php
 
-  $links = [
-    'Home' => 'index.php',
-    'Jour 1' => 'jour1.php',
-    'Jour 2' => 'jour2.php',
-    'Jour 3' => 'jour3.php'
-  ];
+include_once('shared/navLinks.php');
   
   // exo 1
 
