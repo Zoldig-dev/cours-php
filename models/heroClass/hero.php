@@ -31,6 +31,7 @@ abstract class Hero {
     $this->setStrength($strength);
     $this->hp = $strength*19;
     $this->setIntel($intel);
+    $this->mana = $intel*17;
     $this->setAgility($agility);
     $this->lvlStrength = $lvlStrength;
     $this->lvlAgility = $lvlAgility;
@@ -49,34 +50,48 @@ abstract class Hero {
     $this->setStrength($this->strength + $this->lvlStrength);
     $this->setAgility($this->agility + $this->lvlAgility);
     $this->setIntel($this->intel + $this->lvlIntel);
+
   }
 
   public function displayHtml(): void{
 
     echo <<<HTML
-      <div class="hero">
-        <div class="hero-head">
-          <div class="hero-info">
-            <h3 class="hero-name"> {$this->name} </h3>
-            <div class="hero-race"> {$this->race->getName()} </div>
-            <span>{$this->hp} / {$this->hpMax}</span>
-          </div>
-          <div class="hero-logo"> <img src="{$this->logo}" >
-          <div class="hero-lvl"> Niveau: {$this->level} </div>
-          </div>
-        </div>
-        
-        <div class="hero-stat">  
-          <h4>Stat du héro</h4>
-          <span>Force : {$this->strength}</span>
-          <span>Agilité : {$this->agility}</span>
-          <span>Intéligence : {$this->intel}</span>
-          <h4>Dégats du héro</h4>
-          <span>{$this->damageMin}</span>
-          <span>{$this->damageMax}</span>
-        </div>
-
+    <div class="hero">
+     <div class="hero-head">
+      <div class="hero-info">
+      <div class="hero-desc">
+      <h3 class="hero-name">{$this->name}</h3>
+      <div class="hero-race">{$this->race->getName()}</div>
       </div>
+      <div class="hero-bar">
+      <div class="hero-hp">
+       <span>{$this->hp} / {$this->hpMax}</span>
+       </div>
+        <div class="hero-mana">
+         <span>{$this->getMana()} / {$this->manaMax}</span>
+         </div>
+         </div>
+         </div>
+         <div class="hero-logo"><img src="{$this->logo}" /></div>
+         <div class="hero-lvl">LV :{$this->level}</div>
+         </div>
+
+         <div class="hero-stat">
+         <div class="hero-carac">
+         <h4>Stat du héro</h4>
+         <span>Force : {$this->strength}</span>
+         <span>Agilité : {$this->agility}</span>
+         <span>Intéligence : {$this->intel}</span>
+         </div>
+         <div class="hero-carac">
+         <h4>Dégats du héro</h4>
+         <span>DégMin : {$this->damageMin}</span>
+         <span>DégMax : {$this->damageMax}</span>
+         <span>Crit : {$this->critDamage}</span>
+
+         </div>
+         </div>
+         </div>
     HTML;
 
   }
@@ -279,7 +294,7 @@ abstract class Hero {
   public function setIntel($intel)
   {
     $this->intel = $intel;
-    $this->mana = $intel*17;
+    $this->manaMax = $intel*17;
 
     return $this;
   }
