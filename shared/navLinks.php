@@ -1,4 +1,5 @@
 <?php
+
 $links = [
 'Home' => 'index.php',
 'Jour 1' => 'jour1.php',
@@ -7,4 +8,5 @@ $links = [
 'Jour 4-5' => 'jour4.php',
 'Jour 6' => 'jour6.php',
 ];
+
 ?>

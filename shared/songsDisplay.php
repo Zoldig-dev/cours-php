@@ -1,11 +1,11 @@
 <?php
 
-include_once('models/artist.php');
-include_once('models/albums.php');
-include_once('models/playlists.php');
-include_once('models/songs.php');
-include_once('models/style.php');
-include_once('models/users.php');
+include_once('../models/spotifyLike/artist.php');
+include_once('../models/spotifyLike/albums.php');
+include_once('../models/spotifyLike/playlists.php');
+include_once('../models/spotifyLike/songs.php');
+include_once('../models/spotifyLike/style.php');
+include_once('../models/spotifyLike/users.php');
 
 $songs = [];
 

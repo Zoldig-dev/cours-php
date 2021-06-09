@@ -1,7 +1,7 @@
 <?php
 
 include_once('songs.php');
-include_once('shared/functionTime.php');
+include_once('../shared/functionTime.php');
 
 class Albums {
   private string $name;

@@ -1,0 +1,146 @@
+* {
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+}
+
+:root {
+  font-size: 62.5;
+}
+
+body {
+  background: #ada996;
+  background: -webkit-linear-gradient(
+    to right,
+    #eaeaea,
+    #dbdbdb,
+    #f2f2f2,
+    #ada996
+  );
+  background: linear-gradient(to right, #eaeaea, #dbdbdb, #f2f2f2, #ada996);
+  font-family: "Franklin Gothic Medium", "Arial Narrow", Arial, sans-serif;
+}
+
+/* ! navbar */
+
+nav {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  height: 5rem;
+  background: #000000; /* fallback for old browsers */
+  background: -webkit-linear-gradient(
+    to right,
+    #434343,
+    #000000
+  ); /* Chrome 10-25, Safari 5.1-6 */
+  background: linear-gradient(
+    to right,
+    #434343,
+    #000000
+  ); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+}
+nav li {
+  list-style: none;
+  padding: 0.5rem;
+  font-size: 1.5rem;
+}
+nav li a {
+  text-decoration: none;
+  color: #f2f2f2;
+}
+
+nav li a:hover {
+  color: #ffd000;
+}
+
+.navUp {
+  display: flex;
+}
+.navDown {
+  display: flex;
+}
+
+.container {
+  margin-top: 2rem;
+  width: 100%;
+  gap: 10px;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: center;
+}
+
+.card {
+  color: #f2f2f2;
+  border: 1px solid black;
+  background: #000000;
+  background: -webkit-linear-gradient(to right, #434343, #000000);
+  background: linear-gradient(to right, #434343, #000000);
+  padding: 10px;
+  width: 80vw;
+  min-height: 10rem;
+  cursor: pointer;
+}
+.card h2 {
+  padding: 0.5rem 0 1rem 0;
+  text-align: center;
+}
+.card h2:before {
+  content: "";
+}
+.card p {
+  padding: 1rem;
+}
+.card:hover h2 {
+  color: #ffd000;
+}
+.heroes {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1rem;
+}
+.hero {
+  border: 1px solid #dbdbdb;
+  width: 15rem;
+  min-height: 20rem;
+}
+.hero h4{
+  padding: 1rem;
+}
+.hero-head{
+  display: flex;
+}
+.hero-info{
+  flex: 60%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+.hero-name {
+}
+.hero-race {
+}
+.hero-logo{
+  flex: 40%;
+  width: 100%;
+  height: 100%;
+  position: relative;
+}
+.hero-lvl{
+  position: absolute;
+  bottom : -20px;
+  left: 50%;
+  transform: translate(-50%);
+  font-size: 0.8rem;
+}
+.hero-stat {
+  padding: 2rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
