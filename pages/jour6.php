@@ -38,7 +38,6 @@ include_once('../models/heroClass/index.php');
            echo $hero->displayHtml();
           }; ?>
       </div>
-
     </div>
   </div>
 

@@ -14,6 +14,7 @@ $mage1 = new Mage('Coper');
 $mage1->setRace($race1);
 $mage1->lvlUp();
 
+
 $warrior1 = new Warrior('Field');
 $warrior1->setRace($race1);
 

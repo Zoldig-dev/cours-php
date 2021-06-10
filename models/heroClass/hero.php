@@ -18,10 +18,27 @@ abstract class Hero {
   protected int $lvlAgility;
   protected int $lvlIntel;
   protected float $def;
-  protected int $scoreCritStrike;
+  protected float $scoreCritStrike;
   protected int $critDamage;
   protected int $damageMin;
   protected int $damageMax;
+  protected int $firstCarac;
+
+    /**
+     * @return int
+     */
+    public function getFirstCarac()
+    {
+        return $this->firstCarac;
+    }
+
+    /**
+     * @param int $firstCarac
+     */
+    public function setFirstCarac($firstCarac)
+    {
+        $this->firstCarac = $firstCarac;
+    }
 
   public function __construct(int $strength,int $intel,int $agility,string $name, int $lvlStrength, int $lvlAgility, int $lvlIntel, string $logo) {
     $this->level = 1;
@@ -40,9 +57,10 @@ abstract class Hero {
   }
 
   public function setDamage(int $caracFirst){
+    $this->firstCarac = $caracFirst;
     $this->damageMin = round($caracFirst*1.2);
     $this->damageMax = round($caracFirst*1.4);
-    $this->scoreCritStrike += round($caracFirst*0.08);
+    $this->scoreCritStrike += $caracFirst*0.08;
   }
 
   public function lvlUp(){
@@ -50,49 +68,49 @@ abstract class Hero {
     $this->setStrength($this->strength + $this->lvlStrength);
     $this->setAgility($this->agility + $this->lvlAgility);
     $this->setIntel($this->intel + $this->lvlIntel);
-
+    $this->setDamage($this->firstCarac);
   }
 
-  public function displayHtml(): void{
+  public function displayHtml(){
 
     echo <<<HTML
     <div class="hero">
      <div class="hero-head">
-      <div class="hero-info">
-      <div class="hero-desc">
-      <h3 class="hero-name">{$this->name}</h3>
-      <div class="hero-race">{$this->race->getName()}</div>
-      </div>
-      <div class="hero-bar">
-      <div class="hero-hp">
-       <span>{$this->hp} / {$this->hpMax}</span>
-       </div>
-        <div class="hero-mana">
-         <span>{$this->getMana()} / {$this->manaMax}</span>
+        <div class="hero-info">
+            <h3 class="hero-name">{$this->name}</h3>
+            <p class="hero-race">{$this->race->getName()}</p>
+        </div>
+        <div class="hero-logo"><img src="{$this->logo}" /></div>
+        <div class="hero-lvl">LV :{$this->level}</div>
+     </div>
+     <div class="hero-stat">
+        <div class="hero-bar">
+            <div class="test">
+                <span class="liquid" style="--hp-top:calc(({$this->hp} / {$this->hpMax} * -100%) - 20%)"></span>
+                <span class="liquid-info"> $this->hp / $this->hpMax</span>
+            </div>
+            <div class="test">
+                <span class="liquid" style="--mana-top:calc(({$this->mana} / {$this->manaMax} * -100%) - 20%)"></span>
+                <span class="liquid-info"> $this->mana / $this->manaMax</span>
+            </div>
+        </div>
+        <div class="hero-caracs">
+            <div class="hero-carac">
+                <h4>Stat du héro</h4>
+                <span>Force : {$this->strength}</span>
+                <span>Agilité : {$this->agility}</span>
+                <span>Intéligence : {$this->intel}</span>
+            </div>
+            <div class="hero-carac">
+                <h4>Dégats du héro</h4>
+                <span>DégMin : {$this->damageMin}</span>
+                <span>DégMax : {$this->damageMax}</span>
+                <span>Crit : {$this->critDamage}</span>
+            </div>
          </div>
-         </div>
-         </div>
-         <div class="hero-logo"><img src="{$this->logo}" /></div>
-         <div class="hero-lvl">LV :{$this->level}</div>
-         </div>
-
-         <div class="hero-stat">
-         <div class="hero-carac">
-         <h4>Stat du héro</h4>
-         <span>Force : {$this->strength}</span>
-         <span>Agilité : {$this->agility}</span>
-         <span>Intéligence : {$this->intel}</span>
-         </div>
-         <div class="hero-carac">
-         <h4>Dégats du héro</h4>
-         <span>DégMin : {$this->damageMin}</span>
-         <span>DégMax : {$this->damageMax}</span>
-         <span>Crit : {$this->critDamage}</span>
-
-         </div>
-         </div>
-         </div>
-    HTML;
+     </div>
+   </div>
+HTML;
 
   }
 
@@ -251,10 +269,21 @@ abstract class Hero {
    */ 
   public function setStrength($strength)
   {
-    $this->strength = $strength;
-    $this->hpMax = $strength*19;
+      if (isset($this->strength, $this->firstCarac)) {
+          if ($this->strength === $this->firstCarac) {
+              $this->strength = $strength;
+              $this->hpMax = $strength * 19;
+              $this->firstCarac = $this->strength;
+          } else {
+              $this->strength = $strength;
+              $this->hpMax = $strength * 19;
+          }
+      } else {
+          $this->strength = $strength;
+          $this->hpMax = $strength * 19;
+      }
 
-    return $this;
+      return $this;
   }
 
   /**
@@ -272,10 +301,21 @@ abstract class Hero {
    */ 
   public function setAgility($agility)
   {
-    $this->agility = $agility;
-    $this->def = $agility/6;
+      if (isset($this->agility, $this->firstCarac)) {
+          if ($this->agility === $this->firstCarac) {
+              $this->agility = $agility;
+              $this->def = $agility / 6;
+              $this->firstCarac = $this->agility;
+          } else {
+              $this->agility = $agility;
+              $this->def = $agility / 6;
+          }
+      } else {
+          $this->agility = $agility;
+          $this->def = $agility / 6;
+      }
 
-    return $this;
+      return $this;
   }
 
   /**
@@ -293,10 +333,21 @@ abstract class Hero {
    */ 
   public function setIntel($intel)
   {
-    $this->intel = $intel;
-    $this->manaMax = $intel*17;
+      if (isset($this->intel, $this->firstCarac)) {
+          if ($this->intel === $this->firstCarac) {
+              $this->intel = $intel;
+              $this->manaMax = $intel * 17;
+              $this->firstCarac = $this->intel;
+          } else {
+              $this->intel = $intel;
+              $this->manaMax = $intel * 17;
+          }
+      } else {
+          $this->intel = $intel;
+          $this->manaMax = $intel * 17;
+      }
 
-    return $this;
+      return $this;
   }
 
   /**
