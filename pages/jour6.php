@@ -31,11 +31,27 @@ include_once('../models/heroClass/index.php');
         ?>
       </div> -->
   </nav>
+  <div class="logs">
+    <h2>Log du combat</h2>
+    <?php
+            $mage1->dogFight($gobs1);
+            $gobs1->dogFight($mage1);
+        ?>
+  </div>
   <div class="container">
-    <div class="card">
+    <div class="rpgCard">
+      <h2>Heroes</h2>
       <div class="heroes">
         <?php foreach($heroes as $hero){
            echo $hero->displayHtml();
+          }; ?>
+      </div>
+    </div>
+    <div class="rpgCard">
+      <h2>Monsters</h2>
+      <div class="heroes">
+        <?php foreach($monsters as $monster){
+           echo $monster->displayHtml();
           }; ?>
       </div>
     </div>
