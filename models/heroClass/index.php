@@ -57,15 +57,27 @@ function dragFight($mage1, $warrior1, $rogue, $drag1 ){
     && !$drag1->isDead()){
 
     $drag1->dogFight($heros[$index]);
-    $index = rand(0, 2);
-
-    if($mage1->isDead()){
-      echo $mage1->getName(). ' est mort' .'</br>';
-    }elseif($warrior1->isDead()){
-      echo $warrior1->getName(). ' est mort' .'</br>';
-    }elseif($rogue->isDead()){
-      echo $rogue->getName(). ' est mort' .'</br>';
+  
+    if(count($heros) == 1){
+      $index = 0;
+    }elseif(count($heros) == 2 ){
+      $index = rand(0,1);
+    }else{
+      $index = rand(0, 2);
     }
+  }
+
+  if($mage1->isDead()){
+    echo $mage1->getName(). ' est mort' .'</br>';
+    array_splice($heros, (array_search('$mage1', $heros)), 1);
+  }
+  if($warrior1->isDead()){
+    echo $warrior1->getName(). ' est mort' .'</br>';
+    array_splice($heros, (array_search('$warrior1', $heros)), 1);
+  }
+  if($rogue->isDead()){
+    echo $rogue->getName(). ' est mort' .'</br>';
+    array_splice($heros, (array_search('$rogue', $heros)), 1);
   }
 
   if($mage1->isDead() && $warrior1->isDead() && $rogue->isDead()){

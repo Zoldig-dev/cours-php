@@ -18,7 +18,7 @@ abstract class RpgEntity {
   protected ?float $abilityRatio;
     protected int $turn = 0;
   
-  public function dogFight(RpgEntity $rpgEntity): bool {
+  public function dogFight(?RpgEntity $rpgEntity): bool {
     if (0 === $this->turn % 3 && isset($this->ability)) {
       $this->useAbility($rpgEntity);
     } else {
