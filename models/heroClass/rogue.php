@@ -9,7 +9,7 @@ class Rogue extends Hero {
     $this->critDamage = 1.75;
     $this->setDamage(($this->agility));
     $this->abilityRatio = 1.9;
-    $ability = new Ability('Embuscade',  $this->firstCarac * $this->abilityRatio, 160, '../../images/embuscade.svg');
+    $ability = new Ability('Embuscade',  160, $this->firstCarac * $this->abilityRatio,  '../../images/embuscade.svg');
     $this->setAbility($ability);
   }
 }

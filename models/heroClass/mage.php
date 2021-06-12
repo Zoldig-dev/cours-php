@@ -7,7 +7,7 @@ class Mage extends Hero {
     parent::__construct(13, 36, 8, $name, 2, 1 , 6,'Mage', '../images/robe.svg');
     $this->setDamage($this->intel);
     $this->abilityRatio = 2;
-    $ability = new Ability('Fira', $this->principalCarac * $this->abilityRatio, 110, '../../images/fira.svg');
+    $ability = new Ability('Fira', 110, $this->firstCarac * $this->abilityRatio, '../../images/fira.svg');
     $this->setAbility($ability);
   }
 }

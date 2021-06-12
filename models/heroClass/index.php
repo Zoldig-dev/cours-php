@@ -37,15 +37,43 @@ $monsters=[];
 
 $gobs1 = new Gobelin(10);
 $ogre1 = new Ogre(20);
-$drag1 = new Dragon(30);
+$drag1 = new Dragon(40);
 
 $monsters[] = $gobs1;
 $monsters[] = $ogre1;
 $monsters[] = $drag1;
 
-// $heros = [$mage1, $warrior1, $rogue];
-// $index = rand(0, 2);
-// while(($mage1->dogFight($drag1) && $warrior1->dogFight($drag1) && $rogue->dogFight($drag1)) && !$drag1->isDead()) {
-//     $drag1->dogFight($heros[$index]);
-//     $index = rand(0, 2);
-// }
+function dragFight($mage1, $warrior1, $rogue, $drag1 ){
+
+  $heros = [$mage1, $warrior1, $rogue];
+  $index = rand(0, 2);
+
+  while(
+    (
+      (!$mage1->isDead()? $mage1->dogFight($drag1): $mage1->isDead())
+      && (!$warrior1->isDead()?$warrior1->dogFight($drag1) : $warrior1->isDead())
+      && (!$rogue->isDead()?$rogue->dogFight($drag1) : $rogue->isDead())
+    ) 
+    && !$drag1->isDead()){
+
+    $drag1->dogFight($heros[$index]);
+    $index = rand(0, 2);
+
+    if($mage1->isDead()){
+      echo $mage1->getName(). ' est mort' .'</br>';
+    }elseif($warrior1->isDead()){
+      echo $warrior1->getName(). ' est mort' .'</br>';
+    }elseif($rogue->isDead()){
+      echo $rogue->getName(). ' est mort' .'</br>';
+    }
+  }
+
+  if($mage1->isDead() && $warrior1->isDead() && $rogue->isDead()){
+    echo 'You lose';
+  }
+
+  if($drag1->isDead()){
+    echo 'You won'. '</br>';
+  }
+
+}

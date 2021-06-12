@@ -33,10 +33,7 @@ include_once('../models/heroClass/index.php');
   </nav>
   <div class="logs">
     <h2>Log du combat</h2>
-    <?php
-            $mage1->dogFight($gobs1);
-            $gobs1->dogFight($mage1);
-        ?>
+    <?php echo dragFight($mage1, $warrior1, $rogue, $drag1 ); ?>
   </div>
   <div class="container">
     <div class="rpgCard">
