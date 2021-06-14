@@ -1,0 +1,63 @@
+* {
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+}
+
+body {
+  display: grid;
+  place-items: center;
+  width: 100vw;
+  height: 100vh;
+  background: #000;
+  color: white;
+}
+a {
+  text-decoration: none;
+}
+.count {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: relative;
+  width: fit-content;
+  height: fit-content;
+  background: #1f1c2c; /* fallback for old browsers */
+  background: -webkit-linear-gradient(
+    to right,
+    #928dab,
+    #1f1c2c
+  ); /* Chrome 10-25, Safari 5.1-6 */
+  background: linear-gradient(
+    to right,
+    #928dab,
+    #1f1c2c
+  ); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+
+  border-radius: 10px;
+}
+.btn {
+  font-size: 3rem;
+  width: 5rem;
+  height: 5rem;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  border: none;
+  background: transparent;
+  cursor: pointer;
+  color: white;
+  transition: 0.5s ease;
+}
+.btn:hover {
+  transform: rotate(360deg);
+}
+a + a {
+  border-left: 1px solid rgba(255, 255, 255, 0.192);
+}
+.btn-count {
+  position: absolute;
+  bottom: -2.2rem;
+  font-size: 2rem;
+}
